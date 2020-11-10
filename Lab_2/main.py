@@ -13,7 +13,7 @@ def main():
     while True:
         try:
             choice = int(input("Ultima 5 - Game Hacker\nWhat would you like to modify?\n"
-                "1.Edit stats for player\n2.Edit stats for companions\n3.Edit items\n4.Exit\n"))
+                "1.Edit stats and items for player\n2.Edit stats and items for companions\n3.Exit\n"))
         except ValueError:
             print("Please enter a valid menu selection.\n")
         else:
@@ -25,8 +25,9 @@ def main():
             while True:
                 try:
                     sub_choice = int(input("What stat would you like to modify?\n1.Str\n2.Int\n3.Dex\n"
-                                    "4.HP\n5.Max HP\n6.Exp\n7.Gold\n0.Max ALL stats\n"))
-                    if isinstance(sub_choice, int) == True and (sub_choice < 8 and sub_choice >= 0):
+                                    "4.HP\n5.Max HP\n6.Exp\n7.Gold\n8.Keys\n9.Skull Keys\n10.Gems\n"
+                                           "11.Black Badge\n12.Magic Carpet\n13.Magic Axes\n0.Max ALL stats\n"))
+                    if isinstance(sub_choice, int) == True and (sub_choice < 14 and sub_choice >= 0):
                         break
                 except ValueError:
                     print("Please enter a valid menu selection.\n")
@@ -158,6 +159,102 @@ def main():
                 editFile(high, offset1, filename)
                 editFile(low, offset2, filename)
 
+            # Keys
+            elif sub_choice == 8:
+                offset = 0x206
+                while True:
+                    try:
+                        count = int(input("Enter a number between 0 and 100:\n"))
+                        if isinstance(count, int) == True and (count < 101 and count >= 0):
+                            break
+                    except ValueError:
+                        print("Please enter a valid integer value.\n")
+                    else:
+                        if count < 0 or count > 100:
+                            print("Please make sure you are entering a value between 0 and 100.\n")
+
+                editFile(count, offset, filename)
+
+            # Skull Keys
+            elif sub_choice == 9:
+                offset = 0x20B
+                while True:
+                    try:
+                        count = int(input("Enter a number between 0 and 100:\n"))
+                        if isinstance(count, int) == True and (count < 101 and count >= 0):
+                            break
+                    except ValueError:
+                        print("Please enter a valid integer value.\n")
+                    else:
+                        if count < 0 or count > 100:
+                            print("Please make sure you are entering a value between 0 and 100.\n")
+
+                editFile(count, offset, filename)
+
+            # Gems
+            elif sub_choice == 10:
+                offset = 0x207
+                while True:
+                    try:
+                        count = int(input("Enter a number between 0 and 100:\n"))
+                        if isinstance(count, int) == True and (count < 101 and count >= 0):
+                            break
+                    except ValueError:
+                        print("Please enter a valid integer value.\n")
+                    else:
+                        if count < 0 or count > 100:
+                            print("Please make sure you are entering a value between 0 and 100.\n")
+
+                editFile(count, offset, filename)
+
+            # Black Badge
+            elif sub_choice == 11:
+                offset = 0x218
+                while True:
+                    try:
+                        count = int(input("Enter a number between 0 and 100:\n"))
+                        if isinstance(count, int) == True and (count < 101 and count >= 0):
+                            break
+                    except ValueError:
+                        print("Please enter a valid integer value.\n")
+                    else:
+                        if count < 0 or count > 100:
+                            print("Please make sure you are entering a value between 0 and 100.\n")
+
+                editFile(count, offset, filename)
+
+            # Magic Carpet
+            elif sub_choice == 12:
+                offset = 0x20A
+                while True:
+                    try:
+                        count = int(input("Enter a number between 0 and 100:\n"))
+                        if isinstance(count, int) == True and (count < 101 and count >= 0):
+                            break
+                    except ValueError:
+                        print("Please enter a valid integer value.\n")
+                    else:
+                        if count < 0 or count > 100:
+                            print("Please make sure you are entering a value between 0 and 100.\n")
+
+                editFile(count, offset, filename)
+
+            # Magic Axes
+            elif sub_choice == 13:
+                offset = 0x240
+                while True:
+                    try:
+                        count = int(input("Enter a number between 0 and 100:\n"))
+                        if isinstance(count, int) == True and (count < 101 and count >= 0):
+                            break
+                    except ValueError:
+                        print("Please enter a valid integer value.\n")
+                    else:
+                        if count < 0 or count > 100:
+                            print("Please make sure you are entering a value between 0 and 100.\n")
+
+                editFile(count, offset, filename)
+
             elif sub_choice == 0:
                 # str
                 editFile(99, 0x0E, filename)
@@ -182,9 +279,21 @@ def main():
                 editFile(high, 0x204, filename)
                 editFile(low, 0x205, filename)
 
+                # keys
+                editFile(100, 0x206, filename)
+                # skull keys
+                editFile(100, 0x20B, filename)
+                # gems
+                editFile(100, 0x207, filename)
+                # black badge
+                editFile(100, 0x218, filename)
+                # magic carpet
+                editFile(100, 0x20A, filename)
+                # magic axes
+                editFile(100, 0x240, filename)
 
         elif choice == 2:
-            choice = int(input("What companion would you like to edit stats for?\n"
+            choice = int(input("What companion would you like to edit stats and items for?\n"
                                "1.Shamino\n2.Iolo\n3.Gwenno\n4.Julia\n5.Toshi\n6.Jaana\n"
                                "7.Mariah\n8.Katrina\n9.Geoffrey\n10.Maxwell\n11.Sentri\n"
                                "12.Dupre\n13.Johne\n14.Gorn\n15.Saduj\n0.Max ALL Companions\n"))
@@ -193,10 +302,6 @@ def main():
                                "4.HP\n5.Max HP\n6.Exp\n7.Gold\n0.Max ALL stats\n"))
 
         elif choice == 3:
-            choice = int(input("What item would you like to edit?\n1.Keys\n2.Skull Keys\n"
-                               "3.Gems\n4.Black Badge\n5.Magic Carpets\n6.Magic Axes\n"))
-
-        elif choice == 4:
             break
 
     # file = open("Ultima_5\SAVED.GAM", "wb")
