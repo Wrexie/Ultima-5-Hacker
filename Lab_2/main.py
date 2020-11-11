@@ -1,3 +1,9 @@
+'''
+CECS-378: Lab #2
+By: Andrew Baltazar
+ID: 016348512
+Due: 11/13/2020
+'''
 
 def editFile(new_val, offset, filename):
     with open(filename, 'r+b') as f:
@@ -6,6 +12,7 @@ def editFile(new_val, offset, filename):
         f.close()
 
 def main():
+    # Use appropriate file directory and file name
     filename = "ULTIMA_5\SAVED.GAM"
     choice = 0
 
@@ -20,7 +27,7 @@ def main():
             if choice < 1 or choice > 4:
                 print("Please make sure you are entering a valid menu entry.\n")
 
-        # Edit stats for player
+        # Edit stats and items for player
         if choice == 1:
             while True:
                 try:
@@ -255,6 +262,7 @@ def main():
 
                 editFile(count, offset, filename)
 
+            # Max all stats and items for player
             elif sub_choice == 0:
                 # str
                 editFile(99, 0x0E, filename)
@@ -299,7 +307,7 @@ def main():
                                "12.Dupre\n13.Johne\n14.Gorn\n15.Saduj\n0.Max ALL Companions\n"))
 
             stat_choice = int(input("What stat would you like to modify?\n1.Str\n2.Int\n3.Dex\n"
-                               "4.HP\n5.Max HP\n6.Exp\n7.Gold\n0.Max ALL stats\n"))
+                               "4.HP\n5.Max HP\n6.Exp\n0.Max ALL stats\n"))
 
         elif choice == 3:
             break
