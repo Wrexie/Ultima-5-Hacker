@@ -95,6 +95,7 @@ def main():
                             print("Please make sure you are entering a value between 0 and 99.\n")
 
                 edit_file(stat, offset, filename)
+                print("Stat has been updated.\n")
 
             # HP and Max HP
             elif sub_choice == 4 or sub_choice == 5:
@@ -114,6 +115,7 @@ def main():
                 low, high = divmod(stat, 0x100)
                 edit_file(high, offset1, filename)
                 edit_file(low, offset2, filename)
+                print("Stat has been updated.\n")
 
             # Exp. and Gold
             elif sub_choice == 6 or sub_choice == 7:
@@ -133,6 +135,7 @@ def main():
                 low, high = divmod(stat, 0x100)
                 edit_file(high, offset1, filename)
                 edit_file(low, offset2, filename)
+                print("Stat has been updated.\n")
 
             # Keys, skull keys, gems, black badge, magic carpet and magic axes
             elif sub_choice == 8 or sub_choice == 9 or sub_choice == 10 or sub_choice == 11 or sub_choice == 12\
@@ -150,6 +153,7 @@ def main():
                             print("Please make sure you are entering a value between 0 and 100.\n")
 
                 edit_file(count, offset, filename)
+                print("Stat has been updated.\n")
 
             # Max all stats and items for player
             elif sub_choice == 0:
@@ -189,7 +193,11 @@ def main():
                 # magic axes
                 edit_file(100, player_stats_and_items[13], filename)
 
+                print("All player stats have been maxed.\n")
+
+        # Edit stats for companions
         elif choice == 2:
+            # Companion selection menu
             while True:
                 try:
                     sub_choice = int(input("What companion would you like to modify stats for?\n"
@@ -204,6 +212,7 @@ def main():
                     if sub_choice < 1 or sub_choice > 15:
                         print("Please make sure you are entering a valid menu selection.\n")
 
+            # Stat selection menu
             while True:
                 try:
                     stat_choice = int(input("What stat would you like to modify?\n1.Str\n2.Int\n3.Dex\n"
@@ -216,6 +225,7 @@ def main():
                     if stat_choice < 0 or stat_choice > 6:
                         print("Please make sure you are entering a valid menu selection.\n")
 
+            # HP and max HP
             if stat_choice == 4 or stat_choice == 5:
                 while True:
                     try:
@@ -234,7 +244,9 @@ def main():
                 low, high = divmod(stat, 0x100)
                 edit_file(high, offset1, filename)
                 edit_file(low, offset2, filename)
+                print("Stat has been updated.\n")
 
+            # Exp.
             elif stat_choice == 6:
                 while True:
                     try:
@@ -252,7 +264,9 @@ def main():
                 low, high = divmod(stat, 0x100)
                 edit_file(high, offset1, filename)
                 edit_file(low, offset2, filename)
+                print("Stat has been updated.\n")
 
+            # Max all stats for selected companion
             elif stat_choice == 0:
                 # str
                 edit_file(99, companion_stats[sub_choice][1], filename)
@@ -272,7 +286,9 @@ def main():
                 low, high = divmod(9999, 0x100)
                 edit_file(high, companion_stats[sub_choice][6][0], filename)
                 edit_file(low, companion_stats[sub_choice][6][1], filename)
+                print("All stats for the selected companion have been maxed.\n")
 
+            # str, int dex
             else:
                 while True:
                     try:
@@ -287,7 +303,9 @@ def main():
 
                 offset = companion_stats[sub_choice][stat_choice]
                 edit_file(stat, offset, filename)
+                print("Stat has been updated.\n")
 
+        # Exit
         elif choice == 3:
             break
 
